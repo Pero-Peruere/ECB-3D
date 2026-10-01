@@ -6,17 +6,15 @@
     <title>ECB-3D | Catálogo Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilos customizados para o Parallax e animações */
+        /* Fundo exato de acordo com a sua pasta */
         .parallax-bg {
-            /* Uso do %20 no lugar dos espaços para evitar erros no GitHub */
-            background-image: url('maxresdefault%20(1)_2.jpg');
+            background-image: url('maxresdefault%20(1)%20(1).jpg');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
         
-        /* Camada escura sobre a imagem para destacar o texto */
         .parallax-overlay {
             background-color: rgba(0, 0, 0, 0.75);
         }
@@ -30,7 +28,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Oculta scrollbar no modal para um visual mais limpo */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -42,7 +39,6 @@
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans antialiased">
 
-    <!-- Seção Hero com Parallax -->
     <header class="relative h-screen flex items-center justify-center parallax-bg">
         <div class="absolute inset-0 parallax-overlay"></div>
         
@@ -53,7 +49,6 @@
             </p>
         </div>
 
-        <!-- Seta de rolagem -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -61,7 +56,6 @@
         </div>
     </header>
 
-    <!-- Barra de Navegação de Categorias -->
     <nav class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center md:justify-end py-4 overflow-x-auto no-scrollbar space-x-6">
@@ -75,30 +69,23 @@
         </div>
     </nav>
 
-    <!-- Catálogo Principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <!-- Os produtos serão gerados aqui pelo JavaScript -->
         </div>
     </main>
 
-    <!-- Modal de Produto (Visualização Expandida) -->
     <div id="product-modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center p-4 transition-opacity">
         <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full flex flex-col md:flex-row overflow-hidden relative fade-in">
-            
-            <!-- Botão Fechar -->
             <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full p-2 transition-colors z-10">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
 
-            <!-- Imagem do Modal (Esquerda) -->
             <div class="w-full md:w-1/2 bg-gray-100 flex items-center justify-center p-8">
                 <img id="modal-image" src="" alt="Produto" class="max-h-96 object-contain drop-shadow-xl">
             </div>
 
-            <!-- Informações do Modal (Direita) -->
             <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
                 <span id="modal-category" class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold"></span>
                 <h2 id="modal-title" class="text-3xl font-bold text-gray-900 mb-4"></h2>
@@ -114,71 +101,70 @@
         </div>
     </div>
 
-    <!-- Script de Lógica e Renderização -->
     <script>
-        // Banco de Dados Dinâmico de Produtos
+        // Nomes atualizados para corresponderem exatamente aos seus ficheiros
         const produtos = [
             {
                 id: 1,
                 name: "Batman - Fato Clássico",
                 category: "Personagens",
-                image: "batman_2.webp",
+                image: "batman_2.webp.webp",
                 description: "Figura de ação do Batman com o fato clássico cinzento e preto. Impressão 3D de alta qualidade, destacando os detalhes da capa e do cinto de utilidades castanho."
             },
             {
                 id: 2,
                 name: "Super-Homem",
                 category: "Personagens",
-                image: "superman_2.webp",
+                image: "superman.webp",
                 description: "Figura do Super-Homem em pose heroica com cores vibrantes. Peça impressa em 3D com excelente definição no emblema e na textura do fato."
             },
             {
                 id: 3,
                 name: "Wolverine",
                 category: "Personagens",
-                image: "wolverine_2.webp",
+                image: "wolverine.webp",
                 description: "Modelo detalhado do Wolverine com o icónico fato amarelo e azul. Impressão precisa que captura a tensão da pose e o detalhe das garras pretas."
             },
             {
                 id: 4,
                 name: "Goku Super Guerreiro",
                 category: "Personagens",
-                image: "Goku_2.webp",
+                image: "Goku.webp",
                 description: "Estatueta do Goku transformado em Super Guerreiro. Acabamento fantástico com cores vivas no fato cor de laranja, ideal para qualquer colecionador."
             },
             {
                 id: 5,
                 name: "Mickey Mouse",
                 category: "Personagens",
-                image: "mikcey_2.webp",
+                image: "mikcey.webp",
                 description: "Miniatura encantadora do Rato Mickey sentado. Impressão 3D impecável com superfícies suaves e os clássicos sapatos amarelos."
             },
             {
                 id: 6,
                 name: "Daffy Duck - Smoking",
                 category: "Personagens",
-                image: "pato_2.webp",
+                image: "pato.webp",
                 description: "Figura do Daffy Duck vestido de forma elegante com um smoking preto e um laço roxo. Excelente detalhe e contraste de cores."
             },
             {
                 id: 7,
                 name: "Daffy Duck - Laço Azul",
                 category: "Personagens",
-                image: "pato%202_2.webp",
+                image: "pato%202.webp",
                 description: "Daffy Duck com a sua clássica expressão zangada e as mãos na cintura, complementado com um laço azul. Peça divertida e bem detalhada."
             },
             {
                 id: 8,
                 name: "Daffy Duck - Casual",
                 category: "Personagens",
-                image: "pato%203_2.webp",
+                image: "pato%203.webp",
                 description: "Versão do Daffy Duck a usar calças azuis e um cinto castanho. Impressão 3D rigorosa que traz a personagem à vida de forma autêntica."
             },
             {
                 id: 9,
                 name: "Daffy Duck - Furioso",
                 category: "Personagens",
-                image: "pato%204_2.webp",
+                image: "pato%204.webp",
                 description: "Daffy Duck em pose de fúria com os punhos cerrados e um laço azul. Ideal para decorar o seu espaço com um toque de humor."
             }
         ];
