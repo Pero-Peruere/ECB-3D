@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,8 @@
     <style>
         /* Estilos customizados para o Parallax e animações */
         .parallax-bg {
-            background-image: url('maxresdefault (1)_2.jpg');
+            /* Uso do %20 no lugar dos espaços para evitar erros no GitHub */
+            background-image: url('maxresdefault%20(1)_2.jpg');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -163,21 +164,21 @@
                 id: 7,
                 name: "Daffy Duck - Laço Azul",
                 category: "Personagens",
-                image: "pato 2_2.webp",
+                image: "pato%202_2.webp",
                 description: "Daffy Duck com a sua clássica expressão zangada e as mãos na cintura, complementado com um laço azul. Peça divertida e bem detalhada."
             },
             {
                 id: 8,
                 name: "Daffy Duck - Casual",
                 category: "Personagens",
-                image: "pato 3_2.webp",
+                image: "pato%203_2.webp",
                 description: "Versão do Daffy Duck a usar calças azuis e um cinto castanho. Impressão 3D rigorosa que traz a personagem à vida de forma autêntica."
             },
             {
                 id: 9,
                 name: "Daffy Duck - Furioso",
                 category: "Personagens",
-                image: "pato 4_2.webp",
+                image: "pato%204_2.webp",
                 description: "Daffy Duck em pose de fúria com os punhos cerrados e um laço azul. Ideal para decorar o seu espaço com um toque de humor."
             }
         ];
@@ -234,7 +235,7 @@
             const produto = produtos.find(function(p) { return p.id === idProduto; });
             if (!produto) return;
 
-            document.getElementById('modal-image').src = produto.image;
+            document.getElementById('modal-image').src = decodeURI(produto.image);
             document.getElementById('modal-title').innerText = produto.name;
             document.getElementById('modal-category').innerText = produto.category;
             document.getElementById('modal-description').innerText = produto.description;
