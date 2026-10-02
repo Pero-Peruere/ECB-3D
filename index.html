@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Cartão de Visita Digital (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:title" content="ECB-3D | Catálogo de Impressão 3D">
+    <meta property="og:description" content="Peças exclusivas, personagens, decoração e utilidades impressas em 3D com precisão e qualidade. Faça o seu orçamento!">
+    <meta property="og:image" content="https://pero-peruere.github.io/Site-3d/maxresdefault%20(1)%20(1).jpg">
+    <meta property="og:url" content="https://pero-peruere.github.io/Site-3d/">
+    <meta property="og:type" content="website">
+
+    <!-- Ícone da Aba do Navegador (Favicon) -->
+    <!-- Assim que tiver um logotipo, salve-o como 'logo.png' no GitHub para aparecer na aba! -->
+    <link rel="icon" type="image/png" href="logo.png">
+
     <title>ECB-3D | Catálogo Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -35,7 +47,6 @@
             scrollbar-width: none;
         }
         
-        /* Efeito vidro para as setas do modal */
         .glass-btn {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
@@ -148,22 +159,19 @@
     </main>
 
     <!-- Rodapé -->
-    <footer id="sobre" class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-green-500">
+    <footer id="sobre" class="bg-gray-900 text-white pt-12 pb-8 border-t-4 border-green-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                 
-                <!-- Coluna 1: Sobre -->
-                <div class="md:col-span-2">
+                <!-- Coluna 1: Nome -->
+                <div>
                     <h3 class="text-3xl font-bold mb-2 text-white">Gabriel Baumgartner</h3>
                     <p class="text-green-400 font-semibold mb-6 tracking-wide uppercase text-sm">Fundador da ECB-3D</p>
-                    <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-2xl">
-                        A ECB-3D nasceu da paixão por transformar ideias virtuais em realidade palpável. Especializado em modelagem e impressão 3D de alta precisão, dedico-me a entregar peças exclusivas — desde personagens e miniaturas super detalhadas até artigos de decoração e utilidades. Cada projeto é feito com cuidado artesanal, os melhores materiais e tecnologia de ponta para garantir um acabamento impecável em cada camada.
-                    </p>
                 </div>
 
-                <!-- Coluna 2: Contato e Localização -->
+                <!-- Coluna 2: Localização e Redes -->
                 <div class="flex flex-col md:items-end">
-                    <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-green-500 pb-2 inline-block">Localização & Contato</h4>
+                    <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-green-500 pb-2 inline-block">Contato & Localização</h4>
                     
                     <div class="flex items-start md:justify-end gap-3 text-gray-400 mb-6">
                         <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -187,7 +195,7 @@
             
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
                 <p>&copy; 2024 ECB-3D. Todos os direitos reservados.</p>
-                <p class="mt-2 md:mt-0">Feito com dedicação em Santa Helena, PR.</p>
+                <p class="mt-2 md:mt-0">Santa Helena, PR.</p>
             </div>
         </div>
     </footer>
@@ -196,12 +204,10 @@
     <div id="product-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 transition-opacity">
         <div class="bg-stone-50 rounded-2xl shadow-2xl max-w-5xl w-full flex flex-col md:flex-row overflow-hidden relative fade-in border border-gray-200">
             
-            <!-- Botão Fechar -->
             <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-200/80 hover:bg-gray-300 text-gray-800 rounded-full p-2 transition-colors z-20 backdrop-blur-md">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
-            <!-- Área da Imagem com Degradê, Setas Glass e Bolinhas -->
             <div class="w-full md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-8 relative group shadow-inner min-h-[300px]">
                 <button id="modal-prev-btn" onclick="mudarImagem(-1)" class="glass-btn absolute left-4 text-gray-800 rounded-full p-2 hidden transition-all z-10 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -213,13 +219,10 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
 
-                <!-- Indicadores do Carrossel (Bolinhas) -->
                 <div id="modal-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                    <!-- Gerado pelo JS -->
                 </div>
             </div>
 
-            <!-- Informações do Produto -->
             <div class="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center bg-white">
                 <div class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold tracking-widest uppercase w-max mb-4" id="modal-category"></div>
                 <h2 id="modal-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight"></h2>
@@ -238,88 +241,22 @@
 
     <script>
         const produtos = [
-            {
-                id: 1,
-                name: "Batman - Fato Clássico",
-                category: "Personagens",
-                images: ["batman_2.webp.webp"],
-                description: "Figura de ação do Batman com o fato clássico cinzento e preto. Impressão 3D de alta qualidade, destacando os detalhes da capa e do cinto de utilidades castanho."
-            },
-            {
-                id: 2,
-                name: "Super-Homem",
-                category: "Personagens",
-                images: ["superman.webp"],
-                description: "Figura do Super-Homem em pose heroica com cores vibrantes. Peça impressa em 3D com excelente definição no emblema e na textura do fato."
-            },
-            {
-                id: 3,
-                name: "Wolverine",
-                category: "Personagens",
-                images: ["wolverine.webp"],
-                description: "Modelo detalhado do Wolverine com o icónico fato amarelo e azul. Impressão precisa que captura a tensão da pose e o detalhe das garras pretas."
-            },
-            {
-                id: 4,
-                name: "Goku Super Guerreiro",
-                category: "Personagens",
-                images: ["Goku.webp"],
-                description: "Estatueta do Goku transformado em Super Guerreiro. Acabamento fantástico com cores vivas no fato cor de laranja, ideal para qualquer colecionador."
-            },
-            {
-                id: 5,
-                name: "Mickey Mouse",
-                category: "Personagens",
-                images: ["mikcey.webp"],
-                description: "Miniatura encantadora do Rato Mickey sentado. Impressão 3D impecável com superfícies suaves e os clássicos sapatos amarelos."
-            },
-            {
-                id: 6,
-                name: "Daffy Duck - Smoking",
-                category: "Personagens",
-                images: ["pato.webp"],
-                description: "Figura do Daffy Duck vestido de forma elegante com um smoking preto e um laço roxo. Excelente detalhe e contraste de cores."
-            },
-            {
-                id: 7,
-                name: "Daffy Duck - Laço Azul",
-                category: "Personagens",
-                images: ["pato%202.webp"],
-                description: "Daffy Duck com a sua clássica expressão zangada e as mãos na cintura, complementado com um laço azul. Peça divertida e bem detalhada."
-            },
-            {
-                id: 8,
-                name: "Daffy Duck - Casual",
-                category: "Personagens",
-                images: ["pato%203.webp"],
-                description: "Versão do Daffy Duck a usar calças azuis e um cinto castanho. Impressão 3D rigorosa que traz a personagem à vida de forma autêntica."
-            },
-            {
-                id: 9,
-                name: "Daffy Duck - Furioso",
-                category: "Personagens",
-                images: ["pato%204.webp"],
-                description: "Daffy Duck em pose de fúria com os punhos cerrados e um laço azul. Ideal para decorar o seu espaço com um toque de humor."
-            },
-            {
-                id: 11,
-                name: "Polvo Articulado Fofo",
-                category: "Decoração",
-                images: ["polvo%203.webp", "polvo%202.webp", "polvo.webp"],
-                description: "Lindo polvo articulado impresso em 3D. Os seus tentáculos movem-se de forma realista, tornando-o uma excelente peça de decoração interativa ou um ótimo brinquedo sensorial para relaxar."
-            },
-            {
-                id: 12,
-                name: "Acrópole de Atenas - Maquete Grega",
-                category: "Decoração",
-                images: ["6dfd8822c6e0f302.webp"],
-                description: "Maquete espetacular e incrivelmente detalhada da Acrópole de Atenas. Uma peça de decoração clássica e sofisticada, impressa em 3D com texturas realistas que capturam a beleza da arquitetura grega antiga. Perfeita para enfeitar mesas, estantes ou escritórios."
-            }
+            { id: 1, name: "Batman - Fato Clássico", category: "Personagens", images: ["batman_2.webp.webp"], description: "Figura de ação do Batman com o fato clássico cinzento e preto. Impressão 3D de alta qualidade, destacando os detalhes da capa e do cinto de utilidades castanho." },
+            { id: 2, name: "Super-Homem", category: "Personagens", images: ["superman.webp"], description: "Figura do Super-Homem em pose heroica com cores vibrantes. Peça impressa em 3D com excelente definição no emblema e na textura do fato." },
+            { id: 3, name: "Wolverine", category: "Personagens", images: ["wolverine.webp"], description: "Modelo detalhado do Wolverine com o icónico fato amarelo e azul. Impressão precisa que captura a tensão da pose e o detalhe das garras pretas." },
+            { id: 4, name: "Goku Super Guerreiro", category: "Personagens", images: ["Goku.webp"], description: "Estatueta do Goku transformado em Super Guerreiro. Acabamento fantástico com cores vivas no fato cor de laranja, ideal para qualquer colecionador." },
+            { id: 5, name: "Mickey Mouse", category: "Personagens", images: ["mikcey.webp"], description: "Miniatura encantadora do Rato Mickey sentado. Impressão 3D impecável com superfícies suaves e os clássicos sapatos amarelos." },
+            { id: 6, name: "Daffy Duck - Smoking", category: "Personagens", images: ["pato.webp"], description: "Figura do Daffy Duck vestido de forma elegante com um smoking preto e um laço roxo. Excelente detalhe e contraste de cores." },
+            { id: 7, name: "Daffy Duck - Laço Azul", category: "Personagens", images: ["pato%202.webp"], description: "Daffy Duck com a sua clássica expressão zangada e as mãos na cintura, complementado com um laço azul. Peça divertida e bem detalhada." },
+            { id: 8, name: "Daffy Duck - Casual", category: "Personagens", images: ["pato%203.webp"], description: "Versão do Daffy Duck a usar calças azuis e um cinto castanho. Impressão 3D rigorosa que traz a personagem à vida de forma autêntica." },
+            { id: 9, name: "Daffy Duck - Furioso", category: "Personagens", images: ["pato%204.webp"], description: "Daffy Duck em pose de fúria com os punhos cerrados e um laço azul. Ideal para decorar o seu espaço com um toque de humor." },
+            { id: 10, name: "Kit Cartão Montável - Avião F-15", category: "Miniaturas", images: ["f15.jpg"], description: "Incrível kit de montar impresso em 3D. Basta destacar as peças do cartão e encaixá-las para construir o seu próprio caça F-15 em miniatura. Uma peça interativa e detalhada." },
+            { id: 11, name: "Polvo Articulado Fofo", category: "Decoração", images: ["polvo%203.webp", "polvo%202.webp", "polvo.webp"], description: "Lindo polvo articulado impresso em 3D. Os seus tentáculos movem-se de forma realista, tornando-o uma excelente peça de decoração interativa ou um ótimo brinquedo sensorial para relaxar." },
+            { id: 12, name: "Acrópole de Atenas - Maquete Grega", category: "Decoração", images: ["6dfd8822c6e0f302.webp"], description: "Maquete espetacular e incrivelmente detalhada da Acrópole de Atenas. Uma peça de decoração clássica e sofisticada, impressa em 3D com texturas realistas que capturam a beleza da arquitetura grega antiga. Perfeita para enfeitar mesas, estantes ou escritórios." }
         ];
 
         const numeroWhatsApp = "5545988006795";
         let categoriaAtual = 'Todos';
-        
         let imagensModalAtuais = [];
         let indexImagemAtual = 0;
 
@@ -428,7 +365,6 @@
         
         function atualizarImagemModal() {
             const imgElement = document.getElementById('modal-image');
-            // Animação de fade rápida ao trocar de imagem
             imgElement.style.opacity = '0';
             setTimeout(() => {
                 imgElement.src = decodeURI(imagensModalAtuais[indexImagemAtual]);
@@ -445,7 +381,6 @@
                 prevBtn.style.display = indexImagemAtual === 0 ? 'none' : 'block';
                 nextBtn.style.display = indexImagemAtual === imagensModalAtuais.length - 1 ? 'none' : 'block';
                 
-                // Gerar as bolinhas
                 for (let i = 0; i < imagensModalAtuais.length; i++) {
                     const dot = document.createElement('div');
                     dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === indexImagemAtual ? 'bg-gray-800 w-4' : 'bg-gray-400'}`;
