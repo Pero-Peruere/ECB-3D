@@ -25,25 +25,6 @@
     </script>
     
     <style>
-        .parallax-bg {
-            background-image: url('maxresdefault%20(1)%20(1).jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            /* No telemóvel, rola normalmente para evitar o bug de zoom */
-            background-attachment: scroll; 
-        }
-
-        /* Apenas em ecrãs de PC e Tablets (maiores que 768px), ativa o Parallax */
-        @media (min-width: 768px) {
-            .parallax-bg {
-                background-attachment: fixed;
-            }
-        }
-        }
-        .parallax-overlay {
-            background-color: rgba(0, 0, 0, 0.65); /* CLAREADO EM 10% */
-        }
         .fade-in {
             animation: fadeIn 0.3s ease-out;
         }
@@ -126,7 +107,15 @@
         }
     </style>
 </head>
-<body id="inicio" class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300">
+<!-- O body agora é transparente para permitir que a imagem de fundo apareça no Parallax -->
+<body id="inicio" class="bg-transparent text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300">
+
+    <!-- NOVO FUNDO PARALLAX (Funciona perfeitamente no Mobile e PC) -->
+    <div class="fixed top-0 left-0 w-full h-[100vh] z-[-2]">
+        <img src="maxresdefault%20(1)%20(1).jpg" alt="Fundo ECB-3D" class="w-full h-full object-cover">
+        <!-- Película escura de 65% exatamente -->
+        <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.65);"></div>
+    </div>
 
     <!-- Botão Flutuante WhatsApp Sonar -->
     <div class="fixed bottom-6 right-6 z-[60]">
@@ -142,6 +131,7 @@
         <span class="sm:hidden">ECB-3D Impressões</span>
         <a href="https://wa.me/5545988006795" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors font-medium">
             <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Dúvidas? (45) 98800-6795
         </a>
     </div>
 
@@ -149,6 +139,7 @@
     <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- Logotipo em Texto -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
                     <span class="text-3xl font-black tracking-tighter text-gray-900 dark:text-white">ECB-3D</span>
                 </div>
@@ -183,10 +174,9 @@
         </div>
     </header>
 
-    <section class="relative h-[80vh] flex items-center justify-center parallax-bg">
-        <div class="absolute inset-0 parallax-overlay"></div>
+    <section class="relative h-[80vh] flex items-center justify-center">
         <div class="relative z-10 text-center px-4 text-white">
-            <!-- Título 40% Maior -->
+            <!-- Título Aumentado em 40% -->
             <h2 class="text-[84px] md:text-[135px] font-bold tracking-tighter mb-4 text-gradient-animated leading-none">Bem-vindo à ECB-3D</h2>
             <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto mt-6">
                 Transformando ideias em realidade. Peças exclusivas, personagens e utilidades impressas em 3D com alta qualidade e precisão.
@@ -194,81 +184,85 @@
         </div>
     </section>
 
-    <!-- Menu de Categorias Desktop -->
-    <nav class="sticky top-[80px] z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm hidden md:block transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center py-5 overflow-x-auto no-scrollbar space-x-6">
-                <button onclick="filtrarCategoria('Todos')" class="category-btn text-green-500 border-b-2 border-green-500">Todos</button>
-                <button onclick="filtrarCategoria('Personagens')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Personagens</button>
-                <button onclick="filtrarCategoria('Decoração')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Decoração</button>
-                <button onclick="filtrarCategoria('Miniaturas')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Miniaturas</button>
-                <button onclick="filtrarCategoria('Utilidades')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Utilidades</button>
-                <button onclick="filtrarCategoria('Outros')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Outros</button>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Filtros e Seleção de Colunas Mobile -->
-    <div class="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 p-4 sticky top-[125px] z-40 transition-colors duration-300 flex gap-2">
-        <select onchange="filtrarCategoria(this.value)" class="flex-grow bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none">
-            <option value="Todos">Todas as Categorias</option>
-            <option value="Personagens">Personagens</option>
-            <option value="Decoração">Decoração</option>
-            <option value="Miniaturas">Miniaturas</option>
-            <option value="Utilidades">Utilidades</option>
-            <option value="Outros">Outros</option>
-        </select>
-        <!-- Novo Botão Mobile para Escolher Quantidade de Colunas -->
-        <select onchange="mudarColunasMobile(this.value)" class="w-24 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none">
-            <option value="1">1 Col</option>
-            <option value="2">2 Cols</option>
-        </select>
-    </div>
-
-    <!-- Catálogo Principal -->
-    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
-        <div id="no-results" class="hidden text-center py-10">
-            <p class="text-gray-500 dark:text-gray-400 text-lg">Nenhum produto encontrado com esse nome.</p>
-        </div>
+    <!-- WRAPPER PARA O CONTEÚDO DO SITE (Oculta a imagem fixa ao descer) -->
+    <div class="relative z-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 w-full shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
         
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <!-- Produtos renderizados via JS -->
+        <!-- Menu de Categorias Desktop -->
+        <nav class="border-b border-gray-200 dark:border-gray-800 shadow-sm hidden md:block sticky top-[80px] z-40 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-center py-5 overflow-x-auto no-scrollbar space-x-6">
+                    <button onclick="filtrarCategoria('Todos')" class="category-btn text-green-500 border-b-2 border-green-500">Todos</button>
+                    <button onclick="filtrarCategoria('Personagens')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Personagens</button>
+                    <button onclick="filtrarCategoria('Decoração')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Decoração</button>
+                    <button onclick="filtrarCategoria('Miniaturas')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Miniaturas</button>
+                    <button onclick="filtrarCategoria('Utilidades')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Utilidades</button>
+                    <button onclick="filtrarCategoria('Outros')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Outros</button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Filtros e Seleção de Colunas Mobile -->
+        <div class="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 p-4 sticky top-[125px] z-40 transition-colors duration-300 flex gap-2">
+            <select onchange="filtrarCategoria(this.value)" class="flex-grow bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none">
+                <option value="Todos">Todas as Categorias</option>
+                <option value="Personagens">Personagens</option>
+                <option value="Decoração">Decoração</option>
+                <option value="Miniaturas">Miniaturas</option>
+                <option value="Utilidades">Utilidades</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <!-- Botão Mobile para Escolher Quantidade de Colunas -->
+            <select onchange="mudarColunasMobile(this.value)" class="w-24 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none font-bold">
+                <option value="1">1 Col</option>
+                <option value="2">2 Cols</option>
+            </select>
         </div>
-    </main>
 
-    <footer id="sobre" class="bg-gray-900 text-white pt-12 pb-8 border-t-4 border-green-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                <div>
-                    <h3 class="text-3xl font-bold mb-2 text-white">Gabriel Baumgartner</h3>
-                    <p class="text-green-400 font-semibold mb-6 tracking-wide uppercase text-sm">Fundador da ECB-3D</p>
-                </div>
-
-                <div class="flex flex-col md:items-end">
-                    <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-green-500 pb-2 inline-block">Contato & Localização</h4>
-                    <div class="flex items-start md:justify-end gap-3 text-gray-400 mb-6">
-                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        <p class="text-left md:text-right">
-                            <span class="block text-white font-medium mb-1">ECB-3D Impressões</span>
-                            Rua Itaúba, 835<br>
-                            Santa Helena - PR
-                        </p>
-                    </div>
-
-                    <div class="flex gap-4 mt-2">
-                        <a href="https://www.instagram.com/miniaturas.rc_/" target="_blank" class="bg-gray-800 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-500 text-white p-3 rounded-full transition-all shadow-lg" title="Siga no Instagram">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                        </a>
-                    </div>
-                </div>
+        <!-- Catálogo Principal -->
+        <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+            <div id="no-results" class="hidden text-center py-10">
+                <p class="text-gray-500 dark:text-gray-400 text-lg">Nenhum produto encontrado com esse nome.</p>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
-                <p>&copy; 2024 ECB-3D. Todos os direitos reservados.</p>
-                <p class="mt-2 md:mt-0">Santa Helena, PR.</p>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Produtos renderizados via JS -->
             </div>
-        </div>
-    </footer>
+        </main>
+
+        <footer id="sobre" class="bg-gray-900 text-white pt-12 pb-8 border-t-4 border-green-500">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2 text-white">Gabriel Baumgartner</h3>
+                        <p class="text-green-400 font-semibold mb-6 tracking-wide uppercase text-sm">Fundador da ECB-3D</p>
+                    </div>
+
+                    <div class="flex flex-col md:items-end">
+                        <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-green-500 pb-2 inline-block">Contato & Localização</h4>
+                        <div class="flex items-start md:justify-end gap-3 text-gray-400 mb-6">
+                            <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <p class="text-left md:text-right">
+                                <span class="block text-white font-medium mb-1">ECB-3D Impressões</span>
+                                Rua Itaúba, 835<br>
+                                Santa Helena - PR
+                            </p>
+                        </div>
+
+                        <div class="flex gap-4 mt-2">
+                            <a href="https://www.instagram.com/miniaturas.rc_/" target="_blank" class="bg-gray-800 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-500 text-white p-3 rounded-full transition-all shadow-lg" title="Siga no Instagram">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
+                    <p>&copy; 2024 ECB-3D. Todos os direitos reservados.</p>
+                    <p class="mt-2 md:mt-0">Santa Helena, PR.</p>
+                </div>
+            </div>
+        </footer>
+    </div> <!-- FIM DO WRAPPER -->
 
     <!-- Modal de Produto -->
     <div id="product-modal" class="fixed inset-0 z-[70] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 transition-opacity">
