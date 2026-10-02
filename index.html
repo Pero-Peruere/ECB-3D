@@ -25,6 +25,43 @@
     </script>
     
     <style>
+        /* Textura Granulada (Noise/Grain) - Estética Editorial */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        .dark .bg-noise {
+            opacity: 0.08; /* Mais visível no dark mode */
+        }
+
+        /* Animações de Scroll (Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efeito 3D Tilt e Neon Glow nos Cartões */
+        .neon-card {
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .neon-card-inner {
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+        .neon-card:hover {
+            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.3), 0 0 20px rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.6);
+            z-index: 10;
+        }
+
         .fade-in {
             animation: fadeIn 0.3s ease-out;
         }
@@ -72,16 +109,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Efeito Neon Glow nos Cartões */
-        .neon-card {
-            transition: all 0.4s ease;
-        }
-        .neon-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4), 0 0 15px rgba(34, 197, 94, 0.2);
-            border-color: rgba(34, 197, 94, 0.5);
-        }
-
         /* Animação RGB Arco-íris para o Menu */
         @keyframes rgb-rainbow {
             0% { color: #22c55e; text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e; }
@@ -91,7 +118,6 @@
             100% { color: #22c55e; text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e; }
         }
 
-        /* Botões de Categoria Ousados */
         .category-btn {
             font-size: 1.1rem;
             padding: 0.5rem 1.25rem;
@@ -107,13 +133,15 @@
         }
     </style>
 </head>
-<!-- O body agora é transparente para permitir que a imagem de fundo apareça no Parallax -->
-<body id="inicio" class="bg-transparent text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300">
+<body id="inicio" class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300 relative">
 
-    <!-- NOVO FUNDO PARALLAX (Funciona perfeitamente no Mobile e PC) -->
+    <!-- Camada de Textura/Ruído -->
+    <div class="fixed inset-0 z-50 bg-noise mix-blend-overlay"></div>
+
+    <!-- FUNDO PARALLAX -->
     <div class="fixed top-0 left-0 w-full h-[100vh] z-[-2]">
         <img src="maxresdefault%20(1)%20(1).jpg" alt="Fundo ECB-3D" class="w-full h-full object-cover">
-        <!-- Película escura de 65% exatamente -->
+        <!-- Película escura de 65% -->
         <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.65);"></div>
     </div>
 
@@ -136,15 +164,14 @@
     </div>
 
     <!-- Cabeçalho Principal -->
-    <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
+    <header class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logotipo em Texto -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="flex-shrink-0 flex items-center cursor-pointer reveal" onclick="window.scrollTo(0,0)">
                     <span class="text-3xl font-black tracking-tighter text-gray-900 dark:text-white">ECB-3D</span>
                 </div>
                 
-                <div class="flex items-center gap-4 md:gap-6">
+                <div class="flex items-center gap-4 md:gap-6 reveal" style="transition-delay: 0.1s;">
                     <div class="hidden md:block relative">
                         <input type="text" id="searchInput" onkeyup="pesquisarProdutos()" placeholder="Pesquisar peça..." class="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm rounded-full focus:ring-green-500 focus:border-green-500 block w-full pl-4 pr-10 py-2 outline-none transition-all w-48 lg:w-64">
                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -175,20 +202,18 @@
     </header>
 
     <section class="relative h-[80vh] flex items-center justify-center">
-        <div class="relative z-10 text-center px-4 text-white">
-            <!-- Título Aumentado em 40% -->
-            <h2 class="text-[84px] md:text-[135px] font-bold tracking-tighter mb-4 text-gradient-animated leading-none">Bem-vindo à ECB-3D</h2>
-            <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto mt-6">
+        <div class="relative z-10 text-center px-4 text-white reveal">
+            <h2 class="text-[84px] md:text-[135px] font-bold tracking-tighter mb-4 text-gradient-animated leading-none drop-shadow-2xl">Bem-vindo à ECB-3D</h2>
+            <p class="text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto mt-6 drop-shadow-md">
                 Transformando ideias em realidade. Peças exclusivas, personagens e utilidades impressas em 3D com alta qualidade e precisão.
             </p>
         </div>
     </section>
 
-    <!-- WRAPPER PARA O CONTEÚDO DO SITE (Oculta a imagem fixa ao descer) -->
-    <div class="relative z-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 w-full shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+    <!-- WRAPPER PARA O CONTEÚDO -->
+    <div class="relative z-20 bg-gray-50/95 dark:bg-gray-900/95 backdrop-blur-sm transition-colors duration-300 w-full shadow-[0_-15px_40px_rgba(0,0,0,0.5)]">
         
-        <!-- Menu de Categorias Desktop -->
-        <nav class="border-b border-gray-200 dark:border-gray-800 shadow-sm hidden md:block sticky top-[80px] z-40 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <nav class="border-b border-gray-200 dark:border-gray-800 shadow-sm hidden md:block sticky top-[80px] z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition-colors duration-300 reveal">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-center py-5 overflow-x-auto no-scrollbar space-x-6">
                     <button onclick="filtrarCategoria('Todos')" class="category-btn text-green-500 border-b-2 border-green-500">Todos</button>
@@ -201,7 +226,6 @@
             </div>
         </nav>
         
-        <!-- Filtros e Seleção de Colunas Mobile -->
         <div class="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 p-4 sticky top-[125px] z-40 transition-colors duration-300 flex gap-2">
             <select onchange="filtrarCategoria(this.value)" class="flex-grow bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none">
                 <option value="Todos">Todas as Categorias</option>
@@ -211,14 +235,12 @@
                 <option value="Utilidades">Utilidades</option>
                 <option value="Outros">Outros</option>
             </select>
-            <!-- Botão Mobile para Escolher Quantidade de Colunas -->
             <select onchange="mudarColunasMobile(this.value)" class="w-24 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none font-bold">
                 <option value="1">1 Col</option>
                 <option value="2">2 Cols</option>
             </select>
         </div>
 
-        <!-- Catálogo Principal -->
         <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <div id="no-results" class="hidden text-center py-10">
                 <p class="text-gray-500 dark:text-gray-400 text-lg">Nenhum produto encontrado com esse nome.</p>
@@ -229,7 +251,7 @@
             </div>
         </main>
 
-        <footer id="sobre" class="bg-gray-900 text-white pt-12 pb-8 border-t-4 border-green-500">
+        <footer id="sobre" class="bg-gray-900 text-white pt-12 pb-8 border-t-4 border-green-500 reveal">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                     <div>
@@ -279,7 +301,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
                 
-                <img id="modal-image" src="" alt="Produto" class="max-h-[400px] object-contain drop-shadow-xl transition-all duration-500 hover:scale-150 cursor-zoom-in z-10">
+                <img id="modal-image" src="" alt="Produto" class="max-h-[400px] object-contain drop-shadow-2xl transition-all duration-500 hover:scale-150 cursor-zoom-in z-10">
                 
                 <button id="modal-next-btn" onclick="mudarImagem(1)" class="glass-btn absolute right-4 text-gray-800 dark:text-white rounded-full p-2 hidden transition-all z-20 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -290,14 +312,15 @@
             </div>
 
             <div class="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center bg-white dark:bg-gray-800">
-                <div class="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-bold tracking-widest uppercase w-max mb-4" id="modal-category"></div>
+                <div class="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-bold tracking-widest uppercase w-max mb-4 shadow-inner" id="modal-category"></div>
                 <h2 id="modal-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight"></h2>
                 
                 <hr class="border-gray-200 dark:border-gray-700 mb-6">
 
                 <p id="modal-description" class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base md:text-lg"></p>
                 
-                <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-center transition-all shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] hover:shadow-[0_6px_20px_rgba(22,163,74,0.23)] hover:-translate-y-0.5 flex justify-center items-center gap-2 text-lg">
+                <!-- Botão WhatsApp com Brilho Glow -->
+                <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-bold py-4 px-6 rounded-lg text-center transition-all shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_25px_rgba(34,197,94,0.8)] hover:-translate-y-1 flex justify-center items-center gap-2 text-lg">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Fazer Pedido no WhatsApp
                 </a>
@@ -326,7 +349,7 @@
         let imagensModalAtuais = [];
         let indexImagemAtual = 0;
 
-        // Lógica do Dark Mode
+        // Dark Mode
         const themeToggleBtn = document.getElementById('theme-toggle');
         const darkIcon = document.getElementById('theme-toggle-dark-icon');
         const lightIcon = document.getElementById('theme-toggle-light-icon');
@@ -351,7 +374,46 @@
             }
         });
 
-        // Lógica para alterar o número de colunas no Mobile
+        // Configuração do Intersection Observer (Animação de Scroll)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function aplicarAnimacoesScroll() {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // Lógica de 3D Tilt nos Cartões (Vanilla JS)
+        function aplicarEfeito3DTilt() {
+            const cards = document.querySelectorAll('.neon-card');
+            cards.forEach(card => {
+                const inner = card.querySelector('.neon-card-inner');
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -8; // Máx inclinação de 8 graus
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                });
+            });
+        }
+
         function mudarColunasMobile(colunas) {
             const grid = document.getElementById('product-grid');
             grid.classList.remove('grid-cols-1', 'grid-cols-2');
@@ -367,7 +429,7 @@
                 noResults.classList.remove('hidden');
             } else {
                 noResults.classList.add('hidden');
-                produtosFiltrados.forEach(function(produto) {
+                produtosFiltrados.forEach(function(produto, index) {
                     
                     let badgeHTML = '';
                     if (produto.id === 11) {
@@ -378,24 +440,33 @@
                         badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">⚡ Novo</div>';
                     }
 
+                    // A classe reveal é adicionada com delay sequencial
+                    const delay = (index % 4) * 0.1;
+                    
                     const cardHTML = 
-                        '<div class="neon-card bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 overflow-visible cursor-pointer flex flex-col h-full relative" onclick="abrirModal(' + produto.id + ')">' +
-                            badgeHTML +
-                            '<div class="h-64 bg-gray-100 dark:bg-gray-200 flex items-center justify-center p-6 relative rounded-t-xl overflow-hidden">' +
-                                (produto.images.length > 1 ? '<span class="absolute top-3 right-3 bg-white/80 text-gray-800 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm z-10">+' + (produto.images.length - 1) + ' fotos</span>' : '') +
-                                '<img src="' + produto.images[0] + '" alt="' + produto.name + '" class="h-full object-contain drop-shadow-md transition-transform duration-500 hover:scale-110">' +
-                            '</div>' +
-                            '<div class="p-6 flex-grow flex flex-col justify-between border-t border-gray-100 dark:border-gray-700">' +
-                                '<div>' +
-                                    '<p class="text-xs text-green-600 dark:text-green-400 font-bold uppercase tracking-wider mb-2">' + produto.category + '</p>' +
-                                    '<h3 class="text-lg font-bold text-gray-900 dark:text-white leading-tight mb-4">' + produto.name + '</h3>' +
-                                '</div>' +
-                                '<button class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm">Ver Detalhes</button>' +
-                            '</div>' +
-                        '</div>';
+                        `<div class="reveal" style="transition-delay: ${delay}s">
+                            <div class="neon-card bg-transparent cursor-pointer flex flex-col h-full relative" onclick="abrirModal(${produto.id})">
+                                <div class="neon-card-inner bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-full flex flex-col overflow-visible relative">
+                                    ${badgeHTML}
+                                    <div class="h-64 bg-gray-100 dark:bg-gray-200 flex items-center justify-center p-6 relative rounded-t-xl overflow-hidden">
+                                        ${produto.images.length > 1 ? `<span class="absolute top-3 right-3 bg-white/80 text-gray-800 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm z-10">+${produto.images.length - 1} fotos</span>` : ''}
+                                        <img src="${produto.images[0]}" alt="${produto.name}" class="h-full object-contain drop-shadow-md transition-transform duration-500 hover:scale-110">
+                                    </div>
+                                    <div class="p-6 flex-grow flex flex-col justify-between border-t border-gray-100 dark:border-gray-700 relative z-10 bg-white dark:bg-gray-800 rounded-b-xl">
+                                        <div>
+                                            <p class="text-xs text-green-600 dark:text-green-400 font-bold uppercase tracking-wider mb-2">${produto.category}</p>
+                                            <h3 class="text-lg font-bold text-gray-900 dark:text-white leading-tight mb-4">${produto.name}</h3>
+                                        </div>
+                                        <button class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm">Ver Detalhes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
                     
                     grid.innerHTML += cardHTML;
                 });
+                aplicarAnimacoesScroll();
+                aplicarEfeito3DTilt();
             }
         }
 
@@ -518,7 +589,11 @@
             }
         });
 
-        filtrarCategoria('Todos');
+        // Inicialização
+        document.addEventListener("DOMContentLoaded", () => {
+            filtrarCategoria('Todos');
+            aplicarAnimacoesScroll();
+        });
     </script>
 </body>
 </html>
