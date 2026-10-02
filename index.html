@@ -33,7 +33,7 @@
             background-size: cover;
         }
         .parallax-overlay {
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.65); /* CLAREADO EM 10% */
         }
         .fade-in {
             animation: fadeIn 0.3s ease-out;
@@ -103,17 +103,17 @@
 
         /* Botões de Categoria Ousados */
         .category-btn {
-            font-size: 1.1rem; /* Fonte ligeiramente maior */
+            font-size: 1.1rem;
             padding: 0.5rem 1.25rem;
             border-radius: 0.5rem;
             transition: all 0.3s ease;
             font-weight: 600;
         }
         .category-btn:hover {
-            background-color: #000 !important; /* Fundo Preto */
-            animation: rgb-rainbow 3s linear infinite; /* RGB Arco-íris */
-            transform: scale(1.1); /* Aumenta a aba ao passar o rato */
-            border-bottom-color: transparent !important; /* Remove linha de baixo */
+            background-color: #000 !important;
+            animation: rgb-rainbow 3s linear infinite;
+            transform: scale(1.1);
+            border-bottom-color: transparent !important;
         }
     </style>
 </head>
@@ -133,7 +133,6 @@
         <span class="sm:hidden">ECB-3D Impressões</span>
         <a href="https://wa.me/5545988006795" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors font-medium">
             <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Dúvidas? (45) 98800-6795
         </a>
     </div>
 
@@ -141,7 +140,6 @@
     <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logotipo Removido, Substituído pelo Texto Original ECB-3D -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
                     <span class="text-3xl font-black tracking-tighter text-gray-900 dark:text-white">ECB-3D</span>
                 </div>
@@ -179,19 +177,18 @@
     <section class="relative h-[80vh] flex items-center justify-center parallax-bg">
         <div class="absolute inset-0 parallax-overlay"></div>
         <div class="relative z-10 text-center px-4 text-white">
-            <!-- Título com Fonte Aumentada (text-6xl md:text-8xl) -->
-            <h2 class="text-6xl md:text-8xl font-bold tracking-tighter mb-4 text-gradient-animated">Bem-vindo à ECB-3D</h2>
+            <!-- Título 40% Maior -->
+            <h2 class="text-[84px] md:text-[135px] font-bold tracking-tighter mb-4 text-gradient-animated leading-none">Bem-vindo à ECB-3D</h2>
             <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto mt-6">
                 Transformando ideias em realidade. Peças exclusivas, personagens e utilidades impressas em 3D com alta qualidade e precisão.
             </p>
         </div>
     </section>
 
-    <!-- Menu de Categorias com o Novo Efeito RGB Arco-Íris -->
+    <!-- Menu de Categorias Desktop -->
     <nav class="sticky top-[80px] z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm hidden md:block transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center py-5 overflow-x-auto no-scrollbar space-x-6">
-                <!-- Observe as classes 'category-btn' aplicadas a cada botão -->
                 <button onclick="filtrarCategoria('Todos')" class="category-btn text-green-500 border-b-2 border-green-500">Todos</button>
                 <button onclick="filtrarCategoria('Personagens')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Personagens</button>
                 <button onclick="filtrarCategoria('Decoração')" class="category-btn text-gray-500 dark:text-gray-400 border-b-2 border-transparent">Decoração</button>
@@ -202,14 +199,20 @@
         </div>
     </nav>
     
-    <div class="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 p-4 sticky top-[125px] z-40 transition-colors duration-300">
-        <select onchange="filtrarCategoria(this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block w-full p-2.5 outline-none">
+    <!-- Filtros e Seleção de Colunas Mobile -->
+    <div class="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 p-4 sticky top-[125px] z-40 transition-colors duration-300 flex gap-2">
+        <select onchange="filtrarCategoria(this.value)" class="flex-grow bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none">
             <option value="Todos">Todas as Categorias</option>
             <option value="Personagens">Personagens</option>
             <option value="Decoração">Decoração</option>
             <option value="Miniaturas">Miniaturas</option>
             <option value="Utilidades">Utilidades</option>
             <option value="Outros">Outros</option>
+        </select>
+        <!-- Novo Botão Mobile para Escolher Quantidade de Colunas -->
+        <select onchange="mudarColunasMobile(this.value)" class="w-24 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-green-500 block p-2.5 outline-none">
+            <option value="1">1 Col</option>
+            <option value="2">2 Cols</option>
         </select>
     </div>
 
@@ -345,6 +348,13 @@
             }
         });
 
+        // Lógica para alterar o número de colunas no Mobile
+        function mudarColunasMobile(colunas) {
+            const grid = document.getElementById('product-grid');
+            grid.classList.remove('grid-cols-1', 'grid-cols-2');
+            grid.classList.add(`grid-cols-${colunas}`);
+        }
+
         function renderizarProdutos(produtosFiltrados) {
             const grid = document.getElementById('product-grid');
             const noResults = document.getElementById('no-results');
@@ -386,7 +396,6 @@
             }
         }
 
-        // Lógica dos Botões de Categoria Adaptada para a Animação RGB
         function filtrarCategoria(categoria) {
             categoriaAtual = categoria;
             document.getElementById('searchInput').value = '';
