@@ -27,10 +27,19 @@
     <style>
         .parallax-bg {
             background-image: url('maxresdefault%20(1)%20(1).jpg');
-            background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            /* No telemóvel, rola normalmente para evitar o bug de zoom */
+            background-attachment: scroll; 
+        }
+
+        /* Apenas em ecrãs de PC e Tablets (maiores que 768px), ativa o Parallax */
+        @media (min-width: 768px) {
+            .parallax-bg {
+                background-attachment: fixed;
+            }
+        }
         }
         .parallax-overlay {
             background-color: rgba(0, 0, 0, 0.65); /* CLAREADO EM 10% */
