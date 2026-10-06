@@ -55,6 +55,12 @@
         .neon-card-inner {
             transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
+            
+            /* HACKS PARA CORRIGIR OS RISCOS PRETOS / BUG VISUAL */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            outline: 1px solid transparent; 
+            will-change: transform;
         }
         .neon-card:hover {
             box-shadow: 0 15px 35px rgba(34, 197, 94, 0.3), 0 0 20px rgba(34, 197, 94, 0.15);
@@ -406,10 +412,11 @@
                     const rotateX = ((y - centerY) / centerY) * -8; // Máx inclinação de 8 graus
                     const rotateY = ((x - centerX) / centerX) * 8;
                     
-                    inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    // Adicionado translateZ(0) para forçar aceleração de hardware junto ao movimento
+                    inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
                 });
                 card.addEventListener('mouseleave', () => {
-                    inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                    inner.style.transform = `rotateX(0deg) rotateY(0deg) translateZ(0)`;
                 });
             });
         }
@@ -533,7 +540,6 @@
             document.getElementById('modal-category').innerText = produto.category;
             document.getElementById('modal-description').innerText = produto.description;
 
-            // MENSAGEM DO WHATSAPP AJUSTADA AQUI
             const mensagem = "Olá! Me interessei pela peça *" + produto.name + "*. Gostaria de conversar sobre ela.";
             const urlWhatsApp = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensagem);
             
