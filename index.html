@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Cartão de Visita Digital -->
     <meta property="og:title" content="ECB-3D | Catálogo de Impressão 3D">
     <meta property="og:description" content="Peças exclusivas, personagens, decoração e utilidades impressas em 3D com precisão e qualidade. Faça o seu orçamento!">
     <meta property="og:image" content="https://pero-peruere.github.io/Site-3d/maxresdefault%20(1)%20(1).jpg">
     <meta property="og:url" content="https://pero-peruere.github.io/Site-3d/">
     <meta property="og:type" content="website">
     
-    <!-- Ícone da Aba do Navegador -->
     <link rel="icon" type="image/png" href="logo.png">
 
     <title>ECB-3D | Catálogo Digital</title>
     
-    <!-- Configuração do Tailwind para Modo Escuro -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,17 +22,13 @@
     </script>
     
     <style>
-        /* Textura Granulada (Noise/Grain) - Estética Editorial */
         .bg-noise {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             opacity: 0.04;
             pointer-events: none;
         }
-        .dark .bg-noise {
-            opacity: 0.08; /* Mais visível no dark mode */
-        }
+        .dark .bg-noise { opacity: 0.08; }
 
-        /* Animações de Scroll (Reveal) */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -46,7 +39,6 @@
             transform: translateY(0);
         }
 
-        /* Efeito 3D Tilt e Neon Glow nos Cartões */
         .neon-card {
             transition: box-shadow 0.4s ease, border-color 0.4s ease;
             transform-style: preserve-3d;
@@ -55,8 +47,6 @@
         .neon-card-inner {
             transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
-            
-            /* HACKS PARA CORRIGIR OS RISCOS PRETOS / BUG VISUAL */
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             outline: 1px solid transparent; 
@@ -68,40 +58,24 @@
             z-index: 10;
         }
 
-        .fade-in {
-            animation: fadeIn 0.3s ease-out;
-        }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95) translateY(10px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Setas de Vidro */
         .glass-btn {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        .glass-btn:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .dark .glass-btn {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .dark .glass-btn:hover {
-            background: rgba(0, 0, 0, 0.6);
-        }
+        .glass-btn:hover { background: rgba(255, 255, 255, 0.4); }
+        .dark .glass-btn { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .dark .glass-btn:hover { background: rgba(0, 0, 0, 0.6); }
 
-        /* Título com Gradiente Animado */
         .text-gradient-animated {
             background: linear-gradient(270deg, #22c55e, #3b82f6, #14b8a6);
             background-size: 200% 200%;
@@ -115,7 +89,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Animação RGB Arco-íris para o Menu */
         @keyframes rgb-rainbow {
             0% { color: #22c55e; text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e; }
             25% { color: #3b82f6; text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; }
@@ -141,17 +114,14 @@
 </head>
 <body id="inicio" class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300 relative">
 
-    <!-- Camada de Textura/Ruído -->
     <div class="fixed inset-0 z-50 bg-noise mix-blend-overlay"></div>
 
-    <!-- FUNDO PARALLAX -->
     <div class="fixed top-0 left-0 w-full h-[100vh] z-[-2]">
         <img src="maxresdefault%20(1)%20(1).jpg" alt="Fundo ECB-3D" class="w-full h-full object-cover">
-        <!-- Película escura de 65% -->
         <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.65);"></div>
     </div>
 
-    <!-- Botão Flutuante WhatsApp Sonar -->
+    <!-- Botão Flutuante WhatsApp -->
     <div class="fixed bottom-6 right-6 z-[60]">
         <a href="https://wa.me/5545988006795" target="_blank" class="relative flex items-center justify-center w-14 h-14 bg-green-500 rounded-full hover:bg-green-600 transition-colors shadow-2xl group" title="Fale connosco no WhatsApp">
             <span class="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
@@ -159,7 +129,7 @@
         </a>
     </div>
 
-    <!-- Faixa Superior Info -->
+    <!-- Faixa Info -->
     <div class="bg-gray-900 text-gray-300 text-xs sm:text-sm py-2 px-4 sm:px-6 lg:px-8 flex justify-between items-center z-50 relative">
         <span class="hidden sm:inline">Atendimento especializado em impressão 3D</span>
         <span class="sm:hidden">ECB-3D Impressões</span>
@@ -169,7 +139,7 @@
         </a>
     </div>
 
-    <!-- Cabeçalho Principal -->
+    <!-- Header -->
     <header class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -190,7 +160,7 @@
                         <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     </button>
 
-                    <a href="https://www.instagram.com/miniaturas.rc_/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-500 transition-colors" title="Siga-nos no Instagram">
+                    <a href="https://www.instagram.com/miniaturas.rc_/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-500 transition-colors">
                         <svg class="w-6 h-6 md:w-7 md:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                     </a>
                 </div>
@@ -199,9 +169,6 @@
             <div class="md:hidden pb-3">
                 <div class="relative">
                     <input type="text" id="searchInputMobile" onkeyup="pesquisarProdutosMobile()" placeholder="Pesquisar peça..." class="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm rounded-full focus:ring-green-500 focus:border-green-500 block w-full pl-4 pr-10 py-2 outline-none">
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </div>
                 </div>
             </div>
         </div>
@@ -216,7 +183,6 @@
         </div>
     </section>
 
-    <!-- WRAPPER PARA O CONTEÚDO -->
     <div class="relative z-20 bg-gray-50/95 dark:bg-gray-900/95 backdrop-blur-sm transition-colors duration-300 w-full shadow-[0_-15px_40px_rgba(0,0,0,0.5)]">
         
         <nav class="border-b border-gray-200 dark:border-gray-800 shadow-sm hidden md:block sticky top-[80px] z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition-colors duration-300 reveal">
@@ -247,13 +213,18 @@
             </select>
         </div>
 
-        <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+        <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen scroll-mt-24">
             <div id="no-results" class="hidden text-center py-10">
                 <p class="text-gray-500 dark:text-gray-400 text-lg">Nenhum produto encontrado com esse nome.</p>
             </div>
             
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 <!-- Produtos renderizados via JS -->
+            </div>
+
+            <!-- Botões de Paginação -->
+            <div id="pagination-container" class="mt-16 mb-8 flex justify-center gap-2 flex-wrap">
+                <!-- Botões renderizados via JS -->
             </div>
         </main>
 
@@ -264,7 +235,6 @@
                         <h3 class="text-3xl font-bold mb-2 text-white">Gabriel Baumgartner</h3>
                         <p class="text-green-400 font-semibold mb-6 tracking-wide uppercase text-sm">Fundador da ECB-3D</p>
                     </div>
-
                     <div class="flex flex-col md:items-end">
                         <h4 class="text-xl font-bold mb-6 text-white border-b-2 border-green-500 pb-2 inline-block">Contato & Localização</h4>
                         <div class="flex items-start md:justify-end gap-3 text-gray-400 mb-6">
@@ -275,58 +245,38 @@
                                 Santa Helena - PR
                             </p>
                         </div>
-
-                        <div class="flex gap-4 mt-2">
-                            <a href="https://www.instagram.com/miniaturas.rc_/" target="_blank" class="bg-gray-800 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-500 text-white p-3 rounded-full transition-all shadow-lg" title="Siga no Instagram">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                            </a>
-                        </div>
                     </div>
                 </div>
-                
                 <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs md:text-sm">
                     <p>&copy; 2026 ECB-3D. Todos os direitos reservados.</p>
                     <p class="mt-2 md:mt-0">Santa Helena, PR.</p>
                 </div>
             </div>
         </footer>
-    </div> <!-- FIM DO WRAPPER -->
+    </div>
 
     <!-- Modal de Produto -->
     <div id="product-modal" class="fixed inset-0 z-[70] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 transition-opacity">
         <div class="bg-stone-50 dark:bg-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full flex flex-col md:flex-row overflow-hidden relative fade-in border border-gray-200 dark:border-gray-700">
-            
             <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-200/80 dark:bg-gray-800/80 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full p-2 transition-colors z-20 backdrop-blur-md">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-
-            <!-- Imagem com Zoom -->
             <div class="w-full md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-8 relative group shadow-inner min-h-[300px] overflow-hidden">
-                
                 <button id="modal-prev-btn" onclick="mudarImagem(-1)" class="glass-btn absolute left-4 text-gray-800 dark:text-white rounded-full p-2 hidden transition-all z-20 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
-                
                 <img id="modal-image" src="" alt="Produto" class="max-h-[400px] object-contain drop-shadow-2xl transition-all duration-500 hover:scale-150 cursor-zoom-in z-10">
-                
                 <button id="modal-next-btn" onclick="mudarImagem(1)" class="glass-btn absolute right-4 text-gray-800 dark:text-white rounded-full p-2 hidden transition-all z-20 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
-
-                <div id="modal-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
-                </div>
+                <div id="modal-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20"></div>
             </div>
-
             <div class="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center bg-white dark:bg-gray-800">
                 <div class="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-bold tracking-widest uppercase w-max mb-4 shadow-inner" id="modal-category"></div>
                 <h2 id="modal-title" class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight"></h2>
-                
                 <hr class="border-gray-200 dark:border-gray-700 mb-6">
-
                 <p id="modal-description" class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base md:text-lg"></p>
-                
-                <!-- Botão WhatsApp com Brilho Glow -->
-                <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-bold py-4 px-6 rounded-lg text-center transition-all shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_25px_rgba(34,197,94,0.8)] hover:-translate-y-1 flex justify-center items-center gap-2 text-lg">
+                <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-bold py-4 px-6 rounded-lg text-center transition-all shadow-[0_0_15px_rgba(34,197,94,0.5)] flex justify-center items-center gap-2 text-lg">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     Conversar pelo WhatsApp
                 </a>
@@ -335,34 +285,42 @@
     </div>
 
     <script>
+        // Imagem preta (svg) bem curtinha para economizar linhas
+        const imgPreta = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='black'/%3E%3C/svg%3E";
+
         const produtos = [
-            { id: 1, name: "Batman - Fato Clássico", category: "Personagens", images: ["batman_2.webp.webp"], description: "Figura de ação do Batman com o fato clássico cinzento e preto. Impressão 3D de alta qualidade, destacando os detalhes da capa e do cinto de utilidades castanho." },
-            { id: 2, name: "Super-Homem", category: "Personagens", images: ["superman.webp"], description: "Figura do Super-Homem em pose heroica com cores vibrantes. Peça impressa em 3D com excelente definição no emblema e na textura do fato." },
-            { id: 3, name: "Wolverine", category: "Personagens", images: ["wolverine.webp"], description: "Modelo detalhado do Wolverine com o icónico fato amarelo e azul. Impressão precisa que captura a tensão da pose e o detalhe das garras pretas." },
-            { id: 4, name: "Goku Super Guerreiro", category: "Personagens", images: ["Goku.webp"], description: "Estatueta do Goku transformado em Super Guerreiro. Acabamento fantástico com cores vivas no fato cor de laranja, ideal para qualquer colecionador." },
-            { id: 5, name: "Mickey Mouse", category: "Personagens", images: ["mikcey.webp"], description: "Miniatura encantadora do Rato Mickey sentado. Impressão 3D impecável com superfícies suaves e os clássicos sapatos amarelos." },
-            { id: 6, name: "Daffy Duck - Smoking", category: "Personagens", images: ["pato.webp"], description: "Figura do Daffy Duck vestido de forma elegante com um smoking preto e um laço roxo. Excelente detalhe e contraste de cores." },
-            { id: 7, name: "Daffy Duck - Laço Azul", category: "Personagens", images: ["pato%202.webp"], description: "Daffy Duck com a sua clássica expressão zangada e as mãos na cintura, complementado com um laço azul. Peça divertida e bem detalhada." },
-            { id: 8, name: "Daffy Duck - Casual", category: "Personagens", images: ["pato%203.webp"], description: "Versão do Daffy Duck a usar calças azuis e um cinto castanho. Impressão 3D rigorosa que traz a personagem à vida de forma autêntica." },
-            { id: 9, name: "Daffy Duck - Furioso", category: "Personagens", images: ["pato%204.webp"], description: "Daffy Duck em pose de fúria com os punhos cerrados e um laço azul. Ideal para decorar o seu espaço com um toque de humor." },
-            { id: 10, name: "Kit Cartão Montável - Avião F-15", category: "Miniaturas", images: ["f15.jpg"], description: "Incrível kit de montar impresso em 3D. Basta destacar as peças do cartão e encaixá-las para construir o seu próprio caça F-15 em miniatura. Uma peça interativa e detalhada." },
-            { id: 11, name: "Polvo Articulado Fofo", category: "Decoração", images: ["polvo%203.webp", "polvo%202.webp", "polvo.webp"], description: "Lindo polvo articulado impresso em 3D. Os seus tentáculos movem-se de forma realista, tornando-o uma excelente peça de decoração interativa ou um ótimo brinquedo sensorial para relaxar." },
-            { id: 12, name: "Acrópole de Atenas - Maquete Grega", category: "Decoração", images: ["6dfd8822c6e0f302.webp"], description: "Maquete espetacular e incrivelmente detalhada da Acrópole de Atenas. Uma peça de decoração clássica e sofisticada, impressa em 3D com texturas realistas que capturam a beleza da arquitetura grega antiga. Perfeita para enfeitar mesas, estantes ou escritórios." },
-            
-            // 10 ESPAÇOS RESERVADOS PARA NOVOS PRODUTOS
-            { id: 13, name: "Espaço 1", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 14, name: "Espaço 2", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 15, name: "Espaço 3", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 16, name: "Espaço 4", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 17, name: "Espaço 5", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 18, name: "Espaço 6", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 19, name: "Espaço 7", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 20, name: "Espaço 8", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 21, name: "Espaço 9", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
-            { id: 22, name: "Espaço 10", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." }
+            { id: 1, name: "Batman - Fato Clássico", category: "Personagens", images: ["batman_2.webp.webp"], description: "Figura de ação do Batman com o fato clássico cinzento e preto. Impressão 3D de alta qualidade." },
+            { id: 2, name: "Super-Homem", category: "Personagens", images: ["superman.webp"], description: "Figura do Super-Homem em pose heroica com cores vibrantes." },
+            { id: 3, name: "Wolverine", category: "Personagens", images: ["wolverine.webp"], description: "Modelo detalhado do Wolverine com o icónico fato amarelo e azul." },
+            { id: 4, name: "Goku Super Guerreiro", category: "Personagens", images: ["Goku.webp"], description: "Estatueta do Goku transformado em Super Guerreiro." },
+            { id: 5, name: "Mickey Mouse", category: "Personagens", images: ["mikcey.webp"], description: "Miniatura encantadora do Rato Mickey sentado." },
+            { id: 6, name: "Daffy Duck - Smoking", category: "Personagens", images: ["pato.webp"], description: "Figura do Daffy Duck vestido de forma elegante com um smoking preto." },
+            { id: 7, name: "Daffy Duck - Laço Azul", category: "Personagens", images: ["pato%202.webp"], description: "Daffy Duck com a sua clássica expressão zangada e as mãos na cintura." },
+            { id: 8, name: "Daffy Duck - Casual", category: "Personagens", images: ["pato%203.webp"], description: "Versão do Daffy Duck a usar calças azuis e um cinto castanho." },
+            { id: 9, name: "Daffy Duck - Furioso", category: "Personagens", images: ["pato%204.webp"], description: "Daffy Duck em pose de fúria com os punhos cerrados." },
+            { id: 10, name: "Kit Cartão Montável - Avião F-15", category: "Miniaturas", images: ["f15.jpg"], description: "Incrível kit de montar impresso em 3D. Basta destacar as peças." },
+            { id: 11, name: "Polvo Articulado Fofo", category: "Decoração", images: ["polvo%203.webp", "polvo%202.webp", "polvo.webp"], description: "Lindo polvo articulado impresso em 3D." },
+            { id: 12, name: "Acrópole de Atenas - Maquete Grega", category: "Decoração", images: ["6dfd8822c6e0f302.webp"], description: "Maquete espetacular e incrivelmente detalhada da Acrópole de Atenas." }
         ];
 
+        // Adicionando os 25 Espaços vazios pelo JS para manter o código limpo
+        for(let i = 1; i <= 25; i++) {
+            produtos.push({
+                id: 12 + i,
+                name: `Espaço ${i}`,
+                category: "Outros",
+                images: [imgPreta],
+                description: "Descrição do produto em breve..."
+            });
+        }
+
         const numeroWhatsApp = "5545988006795";
+        
+        // Configurações de Paginação
+        const produtosPorPagina = 20;
+        let paginaAtual = 1;
+        let listaAtual = []; // Guarda a lista (filtrada ou total) para a paginação
+        
         let categoriaAtual = 'Todos';
         let imagensModalAtuais = [];
         let indexImagemAtual = 0;
@@ -392,11 +350,7 @@
             }
         });
 
-        // Configuração do Intersection Observer (Animação de Scroll)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -410,7 +364,6 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
-        // Lógica de 3D Tilt nos Cartões (Vanilla JS)
         function aplicarEfeito3DTilt() {
             const cards = document.querySelectorAll('.neon-card');
             cards.forEach(card => {
@@ -421,10 +374,8 @@
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -8; // Máx inclinação de 8 graus
+                    const rotateX = ((y - centerY) / centerY) * -8;
                     const rotateY = ((x - centerX) / centerX) * 8;
-                    
-                    // Adicionado translateZ(0) para forçar aceleração de hardware junto ao movimento
                     inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
                 });
                 card.addEventListener('mouseleave', () => {
@@ -439,54 +390,100 @@
             grid.classList.add(`grid-cols-${colunas}`);
         }
 
-        function renderizarProdutos(produtosFiltrados) {
+        // Função principal que desenha os produtos NA PÁGINA ATUAL
+        function renderizarProdutosDaPagina() {
             const grid = document.getElementById('product-grid');
             const noResults = document.getElementById('no-results');
+            const paginationContainer = document.getElementById('pagination-container');
+            
             grid.innerHTML = ''; 
+            paginationContainer.innerHTML = '';
 
-            if (produtosFiltrados.length === 0) {
+            if (listaAtual.length === 0) {
                 noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-                produtosFiltrados.forEach(function(produto, index) {
-                    
-                    let badgeHTML = '';
-                    if (produto.id === 11) {
-                        badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-orange-500 to-red-600 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">🔥 Mais Vendido</div>';
-                    } else if (produto.id === 12) {
-                        badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">✨ Premium</div>';
-                    } else if (produto.id === 10) {
-                        badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">⚡ Novo</div>';
-                    }
+                return;
+            } 
+            
+            noResults.classList.add('hidden');
 
-                    // A classe reveal é adicionada com delay sequencial
-                    const delay = (index % 4) * 0.1;
-                    
-                    const cardHTML = 
-                        `<div class="reveal" style="transition-delay: ${delay}s">
-                            <div class="neon-card bg-transparent cursor-pointer flex flex-col h-full relative" onclick="abrirModal(${produto.id})">
-                                <div class="neon-card-inner bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-full flex flex-col overflow-visible relative">
-                                    ${badgeHTML}
-                                    <div class="h-64 bg-gray-100 dark:bg-gray-200 flex items-center justify-center p-6 relative rounded-t-xl overflow-hidden">
-                                        ${produto.images.length > 1 ? `<span class="absolute top-3 right-3 bg-white/80 text-gray-800 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm z-10">+${produto.images.length - 1} fotos</span>` : ''}
-                                        <img src="${produto.images[0]}" alt="${produto.name}" class="h-full w-full object-contain drop-shadow-md transition-transform duration-500 hover:scale-110">
+            // Lógica de Paginação (Fatiar a lista)
+            const totalPaginas = Math.ceil(listaAtual.length / produtosPorPagina);
+            const inicio = (paginaAtual - 1) * produtosPorPagina;
+            const fim = inicio + produtosPorPagina;
+            const produtosPagina = listaAtual.slice(inicio, fim);
+
+            // Renderiza os produtos desta página específica
+            produtosPagina.forEach(function(produto, index) {
+                let badgeHTML = '';
+                if (produto.id === 11) {
+                    badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-orange-500 to-red-600 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">🔥 Mais Vendido</div>';
+                } else if (produto.id === 12) {
+                    badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">✨ Premium</div>';
+                } else if (produto.id === 10) {
+                    badgeHTML = '<div class="absolute -top-3 -left-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-black px-3 py-1 rounded-br-xl rounded-tl-xl shadow-lg z-20 transform -rotate-2 border-2 border-white dark:border-gray-800">⚡ Novo</div>';
+                }
+
+                const delay = (index % 4) * 0.1;
+                
+                const cardHTML = 
+                    `<div class="reveal" style="transition-delay: ${delay}s">
+                        <div class="neon-card bg-transparent cursor-pointer flex flex-col h-full relative" onclick="abrirModal(${produto.id})">
+                            <div class="neon-card-inner bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-full flex flex-col overflow-visible relative">
+                                ${badgeHTML}
+                                <div class="h-64 bg-gray-100 dark:bg-gray-200 flex items-center justify-center p-6 relative rounded-t-xl overflow-hidden">
+                                    ${produto.images.length > 1 ? `<span class="absolute top-3 right-3 bg-white/80 text-gray-800 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm z-10">+${produto.images.length - 1} fotos</span>` : ''}
+                                    <img src="${produto.images[0]}" alt="${produto.name}" class="h-full w-full object-contain drop-shadow-md transition-transform duration-500 hover:scale-110">
+                                </div>
+                                <div class="p-6 flex-grow flex flex-col justify-between border-t border-gray-100 dark:border-gray-700 relative z-10 bg-white dark:bg-gray-800 rounded-b-xl">
+                                    <div>
+                                        <p class="text-xs text-green-600 dark:text-green-400 font-bold uppercase tracking-wider mb-2">${produto.category}</p>
+                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white leading-tight mb-4">${produto.name}</h3>
                                     </div>
-                                    <div class="p-6 flex-grow flex flex-col justify-between border-t border-gray-100 dark:border-gray-700 relative z-10 bg-white dark:bg-gray-800 rounded-b-xl">
-                                        <div>
-                                            <p class="text-xs text-green-600 dark:text-green-400 font-bold uppercase tracking-wider mb-2">${produto.category}</p>
-                                            <h3 class="text-lg font-bold text-gray-900 dark:text-white leading-tight mb-4">${produto.name}</h3>
-                                        </div>
-                                        <button class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm">Ver Detalhes</button>
-                                    </div>
+                                    <button class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-black dark:hover:bg-gray-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm">Ver Detalhes</button>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>
+                    </div>`;
+                
+                grid.innerHTML += cardHTML;
+            });
+            
+            aplicarAnimacoesScroll();
+            aplicarEfeito3DTilt();
+
+            // Renderizar os botões de Paginação se houver mais de uma página
+            if (totalPaginas > 1) {
+                for (let i = 1; i <= totalPaginas; i++) {
+                    const btn = document.createElement('button');
+                    btn.innerText = i;
                     
-                    grid.innerHTML += cardHTML;
-                });
-                aplicarAnimacoesScroll();
-                aplicarEfeito3DTilt();
+                    // Estilo diferente para a página ativa
+                    if (i === paginaAtual) {
+                        btn.className = "px-4 py-2 bg-green-500 text-white font-bold rounded-lg shadow-md";
+                    } else {
+                        btn.className = "px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold rounded-lg hover:bg-green-50 dark:hover:bg-gray-700 transition-colors";
+                    }
+                    
+                    btn.onclick = () => mudarPagina(i);
+                    paginationContainer.appendChild(btn);
+                }
             }
+        }
+
+        function mudarPagina(novaPagina) {
+            paginaAtual = novaPagina;
+            renderizarProdutosDaPagina();
+            
+            // Rolar a tela suavemente para o início do catálogo
+            const catalogo = document.getElementById('catalogo');
+            catalogo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Esta função agora apenas atualiza a 'listaAtual' e chama o renderizador
+        function atualizarListaDeProdutos(novaLista) {
+            listaAtual = novaLista;
+            paginaAtual = 1; // Sempre que filtrar ou pesquisar, volta pra página 1
+            renderizarProdutosDaPagina();
         }
 
         function filtrarCategoria(categoria) {
@@ -506,10 +503,10 @@
             });
 
             if (categoria === 'Todos') {
-                renderizarProdutos(produtos);
+                atualizarListaDeProdutos(produtos);
             } else {
                 const filtrados = produtos.filter(function(p) { return p.category === categoria; });
-                renderizarProdutos(filtrados);
+                atualizarListaDeProdutos(filtrados);
             }
         }
 
@@ -525,7 +522,7 @@
                 return p.name.toLowerCase().includes(termo) || p.description.toLowerCase().includes(termo); 
             });
             
-            renderizarProdutos(filtrados);
+            atualizarListaDeProdutos(filtrados);
         }
 
         function pesquisarProdutos() {
@@ -611,7 +608,6 @@
         // Inicialização
         document.addEventListener("DOMContentLoaded", () => {
             filtrarCategoria('Todos');
-            aplicarAnimacoesScroll();
         });
     </script>
 </body>
