@@ -347,7 +347,19 @@
             { id: 9, name: "Daffy Duck - Furioso", category: "Personagens", images: ["pato%204.webp"], description: "Daffy Duck em pose de fúria com os punhos cerrados e um laço azul. Ideal para decorar o seu espaço com um toque de humor." },
             { id: 10, name: "Kit Cartão Montável - Avião F-15", category: "Miniaturas", images: ["f15.jpg"], description: "Incrível kit de montar impresso em 3D. Basta destacar as peças do cartão e encaixá-las para construir o seu próprio caça F-15 em miniatura. Uma peça interativa e detalhada." },
             { id: 11, name: "Polvo Articulado Fofo", category: "Decoração", images: ["polvo%203.webp", "polvo%202.webp", "polvo.webp"], description: "Lindo polvo articulado impresso em 3D. Os seus tentáculos movem-se de forma realista, tornando-o uma excelente peça de decoração interativa ou um ótimo brinquedo sensorial para relaxar." },
-            { id: 12, name: "Acrópole de Atenas - Maquete Grega", category: "Decoração", images: ["6dfd8822c6e0f302.webp"], description: "Maquete espetacular e incrivelmente detalhada da Acrópole de Atenas. Uma peça de decoração clássica e sofisticada, impressa em 3D com texturas realistas que capturam a beleza da arquitetura grega antiga. Perfeita para enfeitar mesas, estantes ou escritórios." }
+            { id: 12, name: "Acrópole de Atenas - Maquete Grega", category: "Decoração", images: ["6dfd8822c6e0f302.webp"], description: "Maquete espetacular e incrivelmente detalhada da Acrópole de Atenas. Uma peça de decoração clássica e sofisticada, impressa em 3D com texturas realistas que capturam a beleza da arquitetura grega antiga. Perfeita para enfeitar mesas, estantes ou escritórios." },
+            
+            // 10 ESPAÇOS RESERVADOS PARA NOVOS PRODUTOS
+            { id: 13, name: "Espaço 1", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 14, name: "Espaço 2", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 15, name: "Espaço 3", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 16, name: "Espaço 4", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 17, name: "Espaço 5", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 18, name: "Espaço 6", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 19, name: "Espaço 7", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 20, name: "Espaço 8", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 21, name: "Espaço 9", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." },
+            { id: 22, name: "Espaço 10", category: "Outros", images: ["data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' style='background-color:black'/%3E"], description: "Descrição do produto em breve..." }
         ];
 
         const numeroWhatsApp = "5545988006795";
@@ -457,7 +469,7 @@
                                     ${badgeHTML}
                                     <div class="h-64 bg-gray-100 dark:bg-gray-200 flex items-center justify-center p-6 relative rounded-t-xl overflow-hidden">
                                         ${produto.images.length > 1 ? `<span class="absolute top-3 right-3 bg-white/80 text-gray-800 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm z-10">+${produto.images.length - 1} fotos</span>` : ''}
-                                        <img src="${produto.images[0]}" alt="${produto.name}" class="h-full object-contain drop-shadow-md transition-transform duration-500 hover:scale-110">
+                                        <img src="${produto.images[0]}" alt="${produto.name}" class="h-full w-full object-contain drop-shadow-md transition-transform duration-500 hover:scale-110">
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col justify-between border-t border-gray-100 dark:border-gray-700 relative z-10 bg-white dark:bg-gray-800 rounded-b-xl">
                                         <div>
